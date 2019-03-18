@@ -81,7 +81,72 @@ The end result of this should look like the below image:
 
 Because these properties are not optional, we will need to provide values for them at object creation time.
 
-But we will do that in a bit!
+But we will do that later on!
+
+# Transformable Attributes
+
+Notice that the values for the `loanee` and `itemImage` attributes are both of the `Transformable` type.
+
+CoreData is only capable of storing certain data types. However, neither of the respective data types for those two attributes — `Loanee` and `UIImage` — can be used by CoreData directly. Declaring them as `Transformable` lets CoreData convert their objects into a type it can store, and then convert it back in to the original types when loading from the filesystem.
+
+Transformable attributes require an `NSValueTransformer` subclass to handle conversions.
+
+> [info]
+>
+> If not specified, the system will use a default transformer which uses archiving to convert the objects to and from NSData objects.
+>
+> Read more about `NSCoding` [here](https://developer.apple.com/documentation/foundation/nscoding)
+
+Since `UIImage` conforms to `NSSecureCoding` (an extension of `NSCoding`), the default transformer will be fine.
+
+But because `Loanee` does not conform to `NSCoding`, we must modify it to conform to the `NSCoding` protocol.
+
+> [action]
+>
+> Update the `Loanee.swift` class to match the following:
+>
+```swift
+import UIKit
+>
+class Loanee: NSObject, NSCoding {
+>
+    var name: String
+    var contactNumber: String?
+>
+    // Protocol requires having Keys for our variables
+    enum Keys: String {
+        case name = "name"
+        case contactNumber = "contactNumber"
+    }
+>
+    init(name: String, contactNumber: String?) {
+>
+        /** For Future Feature: Ability to access Contacts app:
+         init(name: String, profileImage: UIImage, contactNumber: String?) {
+>
+         self.profileImage = profileImage
+         **/
+>
+        self.name = name
+        self.contactNumber = contactNumber
+    }
+>
+    // Protocol requires an encode method to encode our variables based on the Key
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(contactNumber, forKey: "contactNumber")
+    }
+>
+    // Protocol requires an init method which acts as a decoder for our variables based on the Key
+    required init?(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        contactNumber = aDecoder.decodeObject(forKey: "contactNumber") as? String
+        super.init()
+    }
+}
+```
+
+In the next chapter, we will create a custom Managed Object subclass to represent the `Item` entity!
 
 # Now Commit
 
