@@ -18,7 +18,7 @@ $ cp Item.swift ~/Desktop/Item.swift
 
 # Auto-Generating the Managed Object
 
-We are going to let CoreData auto-generate the Managed Object subclass:
+We are going to let Core Data auto-generate the Managed Object subclass:
 
 > [action]
 >
@@ -26,7 +26,7 @@ We are going to let CoreData auto-generate the Managed Object subclass:
 >
 > ![manual-none](assets/manual-none.png)
 
-Next we'll need to do a series of steps to create some CoreData files:
+Next we'll need to do a series of steps to create some Core Data files:
 
 > [action]
 >
@@ -37,7 +37,7 @@ Next we'll need to do a series of steps to create some CoreData files:
 >
 > ![managed_object](assets/managed_object.png)
 
-This will result in Xcode creating the following 2 CoreData-specific files:
+This will result in Xcode creating the following 2 Core Data specific files:
 
 - **`Item+CoreDataClass.swift`** — The Xcode-generated subclass of `NSManagedObject`.
 - **`Item+CoreDataProperties.swift`** — A Swift extension of the `NSManagedObject` subclass above that contains all of its attributes and provides an entity-specific class method for creating a fetch request.
@@ -48,7 +48,7 @@ If you ever experience Xcode not being able to find `Item`, or if you need to ch
 
 > [info]
 >
-> Notice the `@NSManaged` attribute in `Item+CoreDataProperties.swift` extension file. **This attribute informs the Swift compiler that CoreData will provide the declaration’s storage and implementation at runtime.** Applying this attribute also implies the `objc` attribute.
+> Notice the `@NSManaged` attribute in `Item+CoreDataProperties.swift` extension file. **This attribute informs the Swift compiler that Core Data will provide the declaration’s storage and implementation at runtime.** Applying this attribute also implies the `objc` attribute.
 
 # Updating the Managed Object Class
 
@@ -60,9 +60,9 @@ Now, let’s add back the functionality from the original `Item.swift` file.
 
 Let's review what we need to grab from here:
 
-- Because CoreData handles the initialization of its managed objects, we no longer need the two `init` methods in the original file.
+- Because Core Data handles the initialization of its managed objects, we no longer need the two `init` methods in the original file.
 - All of the original properties have been auto-generated as `@NSManaged` properties in the new `Item+CoreDataProperties.swift` extension file, therefore we no longer need them
-- _We do need the `assignLoanee` function._ However, because CoreData can only generate classes, `Item` is no longer a Swift struct. So the `assignLoanee` function no longer needs to be `mutating`.
+- _We do need the `assignLoanee` function._ However, because Core Data can only generate classes, `Item` is no longer a Swift struct. So the `assignLoanee` function no longer needs to be `mutating`.
 
 > [action]
 >
@@ -209,11 +209,11 @@ extension Item {
 }
 ```
 
-# Adapting Project Code to CoreData
+# Adapting Project Code to Core Data
 
 ## Adapting the Loaner Class
 
-In the real world, adding CoreData to a project will likely require changes to existing code.
+In the real world, adding Core Data to a project will likely require changes to existing code.
 
 In the `/model/Item+CoreDataProperties.swift` extension file, the `Loanee` property is invoking an error stating the following:
 
@@ -238,7 +238,7 @@ required public init?(coder aDecoder: NSCoder) {
 ```
 
 
-## Adapting to CoreData Non-Optionals
+## Adapting to Core Data Non-Optionals
 
 Recall that after auto-generating the Managed Object files, we removed the "?" from each property, changing each property to a Swift non-optional type.
 
@@ -248,9 +248,9 @@ Recall that after auto-generating the Managed Object files, we removed the "?" f
 
 > [solution]
 >
-> First, since we set default values for the Managed Object’s properties in the `/model/Item+CoreDataProperties.swift` extension, we know that the database record will not have NULL values when CoreData saves the object.
+> First, since we set default values for the Managed Object’s properties in the `/model/Item+CoreDataProperties.swift` extension, we know that the database record will not have NULL values when Core Data saves the object.
 >
-> In addition, because we can count on CoreData’s dynamic runtime to create an instance of the Managed Object when needed, the extra work necessary to handle these as `optionals` is not required.
+> In addition, because we can count on Core Data’s dynamic runtime to create an instance of the Managed Object when needed, the extra work necessary to handle these as `optionals` is not required.
 
 Because these properties have been changed to Swift non-optionals, we will need to change the existing code in places where those properties are referenced.
 
@@ -295,7 +295,7 @@ message: "Are you sure you want to mark this item, \(item.itemTitle), as returne
 
 The project should now have only 1 warning and the single error in the `createNewItem` function remaining.
 
-We’ll correct that last error soon, but for now, let’s fill out the CoreData Stack by adding other key components to the project. But first...
+We’ll correct that last error soon, but for now, let’s fill out the Core Data Stack by adding other key components to the project. But first...
 
 # Now Commit
 

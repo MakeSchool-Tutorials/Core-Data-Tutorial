@@ -1,17 +1,17 @@
 ---
-title: "Building the CoreData Stack"
+title: "Building the Core Data Stack"
 slug: building-the-coredata-stack
 ---
 
-The CoreData stack consists of multiple objects that interface with our entities to save and load instances to a persistent store. The stack also includes the model file that describes our entities.
+The Core Data stack consists of multiple objects that interface with our entities to save and load instances to a persistent store. The stack also includes the model file that describes our entities.
 
 # Creating the Store Class
 
-In keeping with best practices regarding MVC and the principle of Separation of Concerns, we want to **implement CoreData components independently from Controller and View classes.**
+In keeping with best practices regarding MVC and the principle of Separation of Concerns, we want to **implement Core Data components independently from Controller and View classes.**
 
 > [action]
 >
-> Under the `model/` folder, create a new `Cocoa Touch Class` file with a Class name of  `ItemStore` that is a subclass of `NSObject` and import the CoreData framework:
+> Under the `model/` folder, create a new `Cocoa Touch Class` file with a Class name of  `ItemStore` that is a subclass of `NSObject` and import the Core Data framework:
 >
 ```swift
 import UIKit
@@ -22,11 +22,11 @@ class ItemStore: NSObject {
 }
 ```
 
-_This is the class through which our app will create and manage all CoreData components._
+_This is the class through which our app will create and manage all Core Data components._
 
 # Implementing NSPersistentContainer
 
-The **NSPersistentContainer** object encapsulates the major CoreData Stack components in the application. It consists of a set of objects that facilitate **saving and retrieving data.**
+The **NSPersistentContainer** object encapsulates the major Core Data Stack components in the application. It consists of a set of objects that facilitate **saving and retrieving data.**
 
 It also simplifies the creation and management of the Core Data stack by handling the creation of:
 
@@ -34,7 +34,7 @@ It also simplifies the creation and management of the Core Data stack by handlin
 - The persistent store coordinator `NSPersistentStoreCoordinator`
 - The managed object context `NSManagedObjectContext`
 
-`NSPersistentContainer` includes all objects needed to represent a functioning CoreData stack, including an object to manage the CoreData state as a whole, an object representing the Data Model, and so on.
+`NSPersistentContainer` includes all objects needed to represent a functioning Core Data stack, including an object to manage the Core Data state as a whole, an object representing the Data Model, and so on.
 
 > [action]
 >
@@ -43,7 +43,7 @@ It also simplifies the creation and management of the Core Data stack by handlin
 ```swift
 let persistentContainer: NSPersistentContainer = {
     // creates the NSPersistentContainer object
-    // must be given the name of the CoreData model file “LoanedItems”
+    // must be given the name of the Core Data model file “LoanedItems”
     let container = NSPersistentContainer(name: "LoanedItems")
 >
     // load the saved database if it exists, creates it if it does not, and returns an error under failure conditions
@@ -58,7 +58,7 @@ let persistentContainer: NSPersistentContainer = {
 
 # Instantiating A Store Object
 
-We want to ensure that the CoreData is available from the moment our app launches.
+We want to ensure that the Core Data is available from the moment our app launches.
 
 We also want to ensure there are not multiple versions of the `NSPersistentContainer`, the Managed Object Context, etc.
 
@@ -94,11 +94,11 @@ Rebuild the project, and make sure that previous error has been removed!
 
 # Working With the Context
 
-With the persistent container set up, _our app will now be able to interact with CoreData!_
+With the persistent container set up, _our app will now be able to interact with Core Data!_
 
-Most interactions with CoreData will occur through an instance of a subclass of `NSManagedObjectContext`, the portal through which our app will create new entities, save changes, and fetch from the store.
+Most interactions with Core Data will occur through an instance of a subclass of `NSManagedObjectContext`, the portal through which our app will create new entities, save changes, and fetch from the store.
 
-The persistent container comes with a `NSManagedObjectContext` as one of its built-in properties. This context property provides an environment — a type of temporary “scratchpad” — where CoreData objects can be created and managed entirely in memory.
+The persistent container comes with a `NSManagedObjectContext` as one of its built-in properties. This context property provides an environment — a type of temporary “scratchpad” — where Core Data objects can be created and managed entirely in memory.
 
 When asking the context to fetch data, the context will work with its **persistent store coordinator** to bring temporary copies of its object graph and entities into memory.
 
@@ -109,7 +109,7 @@ Each instance of `NSManagedObjectContext` is associated with a particular concur
 
 The `viewContext` property, which is built-in to the persistent container, is associated with the Main Queue (aka, the UI Queue).
 
-In the event the app needed to save or retrieve data from CoreData on a queue other than the Main Queue, some other context would be required.
+In the event the app needed to save or retrieve data from Core Data on a queue other than the Main Queue, some other context would be required.
 
 For our purposes, using the Main Queue and the viewContext will suffice.
 
@@ -122,7 +122,7 @@ To save any changes any changes in memory back to the database on disk, we will 
 > Implement the `save` method by adding the following code to the `/model/ItemStore` class:
 >
 ```swift
- // MARK: - Save CoreData Context    
+ // MARK: - Save Core Data Context    
 func saveContext() {
     let viewContext = persistentContainer.viewContext
     if viewContext.hasChanges {
@@ -146,7 +146,7 @@ Due to the architecture and user flow of the Loaner app, one logical point to sa
 
 > [action]
 >
-> To save a newly created item to CoreData, we need to override the `viewWillAppear` function in `/controllers/ViewController.swift` class and invoke the `saveContext` function on the `store` variable:
+> To save a newly created item to Core Data, we need to override the `viewWillAppear` function in `/controllers/ViewController.swift` class and invoke the `saveContext` function on the `store` variable:
 >
 ```swift
 override func viewWillAppear(_ animated: Bool) {
@@ -161,7 +161,7 @@ Now let's fix that last Xcode error we've been holding on to!
 
 > [action]
 >
-> Import CoreData in `/controllers/ViewController.swift`:
+> Import Core Data in `/controllers/ViewController.swift`:
 >
 ```swift
 import UIKit
@@ -191,6 +191,6 @@ Try building and launching the app. It should behave exactly as it did at the be
 >
 ```bash
 $ git add .
-$ git commit -m 'implementing CoreData stack, app builds'
+$ git commit -m 'implementing Core Data stack, app builds'
 $ git push
 ```

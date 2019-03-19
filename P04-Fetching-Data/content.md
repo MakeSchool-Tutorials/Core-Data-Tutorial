@@ -3,7 +3,7 @@ title: "Fetching Data"
 slug: fetching-data
 ---
 
-Before we can present saved data to the user, the app must retrieve it from CoreData.
+Before we can present saved data to the user, the app must retrieve it from Core Data.
 
 Remember that `fetchRequest` function in `Item+CoreDataProperties.swift`? The `viewContext` object has a built-in `fetch` function that accepts an `NSFetchRequest` result object produced by invoking the `Item` class’s auto-generated `fetchRequest` function.
 

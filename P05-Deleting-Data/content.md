@@ -5,7 +5,7 @@ slug: deleting-data
 
 We've nailed saving our items, but what if we want to delete an item? Or mark it as returned?
 
-Prior to adding CoreData, when a user deleted an item, the Collection View’s data source was updated accordingly. But now, our current CoreData implementation doesn’t know how to handle items deleted by the user, resulting in items not actually getting deleted, or marked as returned!
+Prior to adding Core Data, when a user deleted an item, the Collection View’s data source was updated accordingly. But now, our current Core Data implementation doesn’t know how to handle items deleted by the user, resulting in items not actually getting deleted, or marked as returned!
 
 # Deleting Items
 
@@ -31,11 +31,11 @@ func deleteItem(at index: Int) {
 }
 ```
 
-Because the `markItemAsReturned` function simply calls the `deleteItem` function, CoreData is now implemented for both user choices!
+Because the `markItemAsReturned` function simply calls the `deleteItem` function, Core Data is now implemented for both user choices!
 
 Rebuild and run the app again and try deleting items or marking them as returned. Make sure they delete, and then eject the app from memory and reopen it to see that they stay deleted.
 
-**Congrats! The loaner app is now fully functional with CoreData!**
+**Congrats! The loaner app is now fully functional with Core Data!**
 
 # Now Commit
 
