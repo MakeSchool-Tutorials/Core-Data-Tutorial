@@ -100,3 +100,13 @@ Build and run the project, and validate that items you save are persisted even a
 > Run the Loaner app, add 2 items into the app, and then use the Fast App Switcher to eject it from memory. Reopen the app and make sure your items persisted.
 
 You should now be able to save items in your app even after the app is ejected from memory!
+
+# Now Commit
+
+>[action]
+>
+```bash
+$ git add .
+$ git commit -m 'Items persist in the app'
+$ git push
+```
