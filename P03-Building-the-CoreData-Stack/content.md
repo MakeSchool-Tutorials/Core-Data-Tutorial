@@ -3,7 +3,7 @@ title: "Building the CoreData Stack"
 slug: building-the-coredata-stack
 ---
 
-The CoreData stack consists of multiple objects that interface with your entities to save and load instances to a persistent store. The stack also includes the model file that describes your entities.
+The CoreData stack consists of multiple objects that interface with our entities to save and load instances to a persistent store. The stack also includes the model file that describes our entities.
 
 # Creating the Store Class
 
@@ -22,7 +22,7 @@ class ItemStore: NSObject {
 }
 ```
 
-_This is the class through which your app will create and manage all CoreData components._
+_This is the class through which our app will create and manage all CoreData components._
 
 # Implementing NSPersistentContainer
 
@@ -34,11 +34,11 @@ It also simplifies the creation and management of the Core Data stack by handlin
 - The persistent store coordinator `NSPersistentStoreCoordinator`
 - The managed object context `NSManagedObjectContext`
 
-`NSPersistentContainer` includes all objects needed to represent a functioning CoreData stack, including an object to manage the CoreData state as a whole, an object representing your Data Model, and so on.
+`NSPersistentContainer` includes all objects needed to represent a functioning CoreData stack, including an object to manage the CoreData state as a whole, an object representing the Data Model, and so on.
 
 > [action]
 >
-> To implement `NSPersistentContainer`, add the following code inside your `/model/ItemStore` class:
+> To implement `NSPersistentContainer`, add the following code inside the `/model/ItemStore` class:
 >
 ```swift
 let persistentContainer: NSPersistentContainer = {
@@ -58,7 +58,7 @@ let persistentContainer: NSPersistentContainer = {
 
 # Instantiating A Store Object
 
-We want to ensure that the CoreData is available from the moment your app launches.
+We want to ensure that the CoreData is available from the moment our app launches.
 
 We also want to ensure there are not multiple versions of the `NSPersistentContainer`, the Managed Object Context, etc.
 
@@ -74,7 +74,7 @@ let viewController = rootViewController.topViewController as! ViewController
 viewController.store = ItemStore()
 ```
 
-You should see a new Xcode error: “Value of type 'ViewController' has no member ‘store’". Let's fix that real quick:
+There should now be a new Xcode error: “Value of type 'ViewController' has no member ‘store’". Let's fix that real quick:
 
 > [action]
 >
@@ -90,19 +90,19 @@ class ViewController: UIViewController {
 }
 ```
 
-Rebuild the project, and you should see that previous error has been removed!
+Rebuild the project, and make sure that previous error has been removed!
 
 # Working With the Context
 
-With your persistent container set up, _your app will now be able to interact with CoreData!_
+With the persistent container set up, _our app will now be able to interact with CoreData!_
 
-Most interactions with CoreData will occur through an instance of a subclass of `NSManagedObjectContext`, the portal through which your app will create new entities, save changes, and fetch from the store.
+Most interactions with CoreData will occur through an instance of a subclass of `NSManagedObjectContext`, the portal through which our app will create new entities, save changes, and fetch from the store.
 
-Your persistent container comes with a `NSManagedObjectContext` as one of its built-in properties. This context property provides an environment — a type of temporary “scratchpad” — where CoreData objects can be created and managed entirely in memory.
+The persistent container comes with a `NSManagedObjectContext` as one of its built-in properties. This context property provides an environment — a type of temporary “scratchpad” — where CoreData objects can be created and managed entirely in memory.
 
 When asking the context to fetch data, the context will work with its **persistent store coordinator** to bring temporary copies of its object graph and entities into memory.
 
-However, until you tell the context to save any new changes, all persisted data remains the same.
+However, until we tell the context to save any new changes, all persisted data remains the same.
 
 ## The viewContext and Concurrency
 Each instance of `NSManagedObjectContext` is associated with a particular concurrency queue, and we must interact with a context on the queue that is associated with it.

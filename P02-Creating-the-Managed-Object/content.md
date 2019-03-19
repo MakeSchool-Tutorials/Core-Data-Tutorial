@@ -3,7 +3,7 @@ title: "Creating the Managed Object"
 slug: creating-the-managed-object
 ---
 
-For this step, first back up your `item.swift` file by saving a copy of it on your Desktop or some other safe place — you will need to copy some of the code from it into your `NSManagedObject` subclass after you create it! We delete this so that we can do the next operations without conflict in Xcode.
+For this step, first back up the `item.swift` file by saving a copy of to Desktop or some other safe place — we will need to copy some of the code from it into the `NSManagedObject` subclass after we create it! We delete this so that we can do the next operations without conflict in Xcode.
 
 > [action]
 >
@@ -14,11 +14,11 @@ $ cd MOB_2.1_Tutorial_Starter_App/loaner/model/
 $ cp Item.swift ~/Desktop/Item.swift
 ```
 >
-> Then, delete the `Item.swift` file from your project. Make sure to select "Move to Trash"
+> Then, delete the `Item.swift` file from the project. Make sure to select "Move to Trash"
 
 # Auto-Generating the Managed Object
 
-You are going to let CoreData auto-generate your Managed Object subclass:
+We are going to let CoreData auto-generate the Managed Object subclass:
 
 > [action]
 >
@@ -44,11 +44,11 @@ This will result in Xcode creating the following 2 CoreData-specific files:
 
 
 **IMPORTANT DEBUG NOTE**
-If you ever experience Xcode not being able to find `Item`, or if you need to change your model file, you can delete both files above, restart Xcode, and repeat the steps to generate the `NSManagedObject`
+If you ever experience Xcode not being able to find `Item`, or if you need to change the model file, delete both files above, restart Xcode, and repeat the steps to generate the `NSManagedObject`
 
 > [info]
 >
-> Notice the `@NSManaged` attribute in your `Item+CoreDataProperties.swift` extension file. **This attribute informs the Swift compiler that CoreData will provide the declaration’s storage and implementation at runtime.** Applying this attribute also implies the `objc` attribute.
+> Notice the `@NSManaged` attribute in `Item+CoreDataProperties.swift` extension file. **This attribute informs the Swift compiler that CoreData will provide the declaration’s storage and implementation at runtime.** Applying this attribute also implies the `objc` attribute.
 
 # Updating the Managed Object Class
 
@@ -56,7 +56,7 @@ Now, let’s add back the functionality from the original `Item.swift` file.
 
 > [action]
 >
-> Open the `Item.swift` file you previously saved as back up
+> Open the `Item.swift` file we previously saved as back up
 
 Let's review what we need to grab from here:
 
@@ -129,7 +129,7 @@ override public func awakeFromInsert() {
 }
 ```
 
-Your `/model/Item+CoreDataClass.swift` file should now look like the following:
+The `/model/Item+CoreDataClass.swift` file should now look like the following:
 
 ```swift
 import Foundation
@@ -175,7 +175,7 @@ public class Item: NSManagedObject {
 
 > [action]
 >
-> Make the following changes to your `/model/Item+CoreDataProperties.swift` file:
+> Make the following changes to the `/model/Item+CoreDataProperties.swift` file:
 >
 > - Change all properties to non-optionals by removing their question marks (“?”)
 > - Change the `Loanee` property’s type from `NSObject` to `Loanee`:
@@ -240,7 +240,7 @@ required public init?(coder aDecoder: NSCoder) {
 
 ## Adapting to CoreData Non-Optionals
 
-Recall that after auto-generating your Managed Object files, you removed the "?" from each property, changing each property to a Swift non-optional type.
+Recall that after auto-generating the Managed Object files, we removed the "?" from each property, changing each property to a Swift non-optional type.
 
 > [action]
 >
@@ -295,7 +295,7 @@ message: "Are you sure you want to mark this item, \(item.itemTitle), as returne
 
 The project should now have only 1 warning and the single error in the `createNewItem` function remaining.
 
-We’ll correct that last error soon, but for now, let’s fill out the CoreData Stack by adding other key components to your project. But first...
+We’ll correct that last error soon, but for now, let’s fill out the CoreData Stack by adding other key components to the project. But first...
 
 # Now Commit
 

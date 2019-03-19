@@ -5,7 +5,7 @@ slug: fetching-data
 
 Before we can present saved data to the user, the app must retrieve it from CoreData.
 
-Remember that `fetchRequest` function in `Item+CoreDataProperties.swift`? The `viewContext` object has a built-in `fetch` function that accepts an `NSFetchRequest` result object produced by invoking your `Item` class’s auto-generated `fetchRequest` function.
+Remember that `fetchRequest` function in `Item+CoreDataProperties.swift`? The `viewContext` object has a built-in `fetch` function that accepts an `NSFetchRequest` result object produced by invoking the `Item` class’s auto-generated `fetchRequest` function.
 
 # Creating and Sending a Fetch Request
 
@@ -93,13 +93,13 @@ override func viewWillAppear(_ animated: Bool) {
 }
 ```
 
-Build and run the project, and validate that items you save are persisted even after the app has been wiped from memory:
+Build and run the project, and validate that items saved are persisted even after the app has been wiped from memory:
 
 > [action]
 >
-> Run the Loaner app, add 2 items into the app, and then use the Fast App Switcher to eject it from memory. Reopen the app and make sure your items persisted.
+> Run the Loaner app, add 2 items into the app, and then use the Fast App Switcher to eject it from memory. Reopen the app and make sure the items persisted.
 
-You should now be able to save items in your app even after the app is ejected from memory!
+Try saving items in the app even after the app is ejected from memory!
 
 # Now Commit
 

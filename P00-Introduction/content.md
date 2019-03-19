@@ -60,8 +60,8 @@ To validate the working state of the starter app before we add CoreData, let’s
 > 1. From Xcode, launch the starter app in the Simulator
 > 1. Create 2 or 3 loaned items
 > 1. Completely remove the app from memory by double tapping the Home button or slowly drag upward from the bottom of the screen
-> 1. If that doesn't work, you can always use `[Cmd]+[Shift]+H+H`, to reveal all apps in memory
-> 1. When you see the Loaner app in the Fast App Switcher as seen below, swipe upward to remove it from memory
+> 1. If that doesn't work, use `[Cmd]+[Shift]+H+H`, to reveal all apps in memory
+> 1. When the Loaner app in the Fast App Switcher as seen below, swipe upward to remove it from memory
 
 ![fast-app-switcher](assets/Fast-App-Switching.png)
 
@@ -69,6 +69,6 @@ Click on the Loaner app icon to relaunch it. None of the loaned items you previo
 
 > [info]
 >
-> If Fast App Switching does not work in your Simulator, you can also remove all apps from memory by selecting Hardware —> Restart from the Simulator’s menu.
+> If Fast App Switching does not work in the Simulator, try removing all apps from memory by selecting Hardware —> Restart from the Simulator’s menu.
 
 Let's work on getting that data to persist even after a memory removal!

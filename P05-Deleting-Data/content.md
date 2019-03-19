@@ -33,7 +33,7 @@ func deleteItem(at index: Int) {
 
 Because the `markItemAsReturned` function simply calls the `deleteItem` function, CoreData is now implemented for both user choices!
 
-Rebuild and run your app again and try deleting items or marking them as returned. Make sure they delete, and then eject the app from memory and reopen it to see that they stay deleted.
+Rebuild and run the app again and try deleting items or marking them as returned. Make sure they delete, and then eject the app from memory and reopen it to see that they stay deleted.
 
 **Congrats! The loaner app is now fully functional with CoreData!**
 
