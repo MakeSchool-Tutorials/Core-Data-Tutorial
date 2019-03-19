@@ -50,9 +50,9 @@ $ git push origin master -u
 ```
 
 # Confirming Starter App State
-We haven’t added any data persistence to the starter app yet, so no user-added data will be retained once the app is no longer in memory.
+We haven’t added any data persistence to the starter app yet, so nothing will be retained once the app is no longer in memory.
 
-To validate the working state of the starter app before we add CoreData, let’s add some user data, then simulate the app’s removal from memory:
+To validate the working state of the starter app, let’s add some user data, then remove the app from memory:
 
 > [action]
 > Do the following actions to validate the app:
@@ -71,4 +71,4 @@ Click on the Loaner app icon to relaunch it. None of the loaned items you previo
 >
 > If Fast App Switching does not work in the Simulator, try removing all apps from memory by selecting Hardware —> Restart from the Simulator’s menu.
 
-Let's work on getting that data to persist even after a memory removal!
+We've got a ways to go in order to fully get the data to persist after a memory removal, so let's get started by building out our model for CoreData!
