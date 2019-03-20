@@ -3,24 +3,27 @@ title: "Core Data Model"
 slug: core-data-model
 ---
 
-Much of Core Data’s functionality depends on the schema we create to describe the application’s entities, their properties, and the relationships between them. Core Data uses a schema called a managed object model — an instance of NSManagedObjectModel.
+Much of Core Data’s functionality depends on the schema we use to describe the application’s entities, properties, and the relationships between them.
+
+Core Data uses a schema called a **managed object model** — an instance of `NSManagedObjectModel`.
 
 # Adding the Core Data Model File
 
-To start the Core Data implementation, we will add a new Data Model file to the baseline starter app’s existing model group.
+To start the Core Data implementation, we will need to add a new Data Model file to our existing model group.
 
 > [action]
 >
 > Select `File --> New --> File..`, make sure that the iOS template is highlighted, search for `Data Model` and select that template.
-> When prompted to `Save As`, name the new model file `LoanedItems.xcdatamodeld`, and save it under `/loaner/model/`
+>
+> When prompted to `Save As`, name the new model file `LoanedItems.xcdatamodeld`, and save it under the `model/` group
 >
 > ![LoanedItems](assets/LoanedItems_ModelFile.png)
 
-At runtime, Core Data will use the `LoanedItems.xcdatamodeld` file to programmatically create an instance of `NSManagedObjectModel` that is an in-memory representation of the `.xcdatamodeld` file, which describes the managed objects.
+At runtime, Core Data will use the `LoanedItems.xcdatamodeld` file (which describes the managed objects) to programmatically create an instance of `NSManagedObjectModel`, which is an in-memory representation of the `LoanedItems.xcdatamodeld` file.
 
 # Modeling Entities
 
-The **managed object model** allows Core Data to map from records in a persistent store to managed objects that we use in our application.
+The **managed object model** allows Core Data to map from records in a persistent store, to managed objects that we use in our application.
 
 The managed object model is a collection of **entity description objects**, which are instances of `NSEntityDescription`.
 
@@ -46,28 +49,24 @@ Let's create an entity of our own:
 
 # Adding Attributes
 
-The attributes we can add to an entity are also represented as properties in the `NSManagedObject` subclasses.
+The attributes we add to an entity are also represented as properties in the `NSManagedObject` subclasses. Let's give our new entity some attributes:
 
 > [action]
 >
-> Add the list of `notes`, `itemImage`, `itemTitle`, and `loanee` attributes depicted below to our `Item` entity. Note that attribute order may differ, but the **Type assigned to each Attribute should match the Type shown for each in the list below**:
+> Add `notes`, `itemImage`, `itemTitle`, and `loanee` attributes to the `Item` entity. Note that attribute order may differ, but the **Type assigned to each Attribute should match the Type shown for each in the list below**:
 >
 > ![attributes](assets/attributes.png)
 
-Double check that our attributes have the correct name and Type!
+Double check that the attributes have the correct name and Type!
 
 # Optional & Non-Optional Attributes
 
 The Data Model Editor makes all attributes `optional` by default.
 
-But the terms `Optional` and `Non-Optional` have markedly different meanings in Swift and Core Data.
+Core Data was designed to handle the transaction details of databases, such as SQLite, where it is common to specify whether or not the insertion of NULL values is allowed for a given column. Therefore,
+_marking an attribute as `optional` does not imply that it is a Swift `optional`._ It means that during runtime Core Data will create a database record that _optionally allows NULL values if the property does not contain data._
 
-Because Core Data was designed to be used by multiple platforms (iOS, macOS) and languages (Objective-C, Swift), it is compiled directly to Objective-C and hence is unaware of purely Swift constructs like optionals, structs, and so on.
-
-Core Data was also designed to handle the transaction details of databases, such as SQLite, where it is common to specify whether or not the insertion of NULL values is allowed for a given column.
-Marking an attribute as `optional` does not imply that it is a Swift `optional`: It means that during runtime Core Data will create a database record that optionally allows NULL values if the property does not contain data.
-
-But we do need this feature or the complexities it can add, so let’s change all our attributes to non-optional:
+We don't need this feature, or the complexities it can add, so let’s change all our attributes to non-optional:
 
 > [action]
 >
@@ -77,17 +76,15 @@ The end result of this should look like the below image:
 
 ![optional_attributes_unchecked](assets/optional_attributes_unchecked.png)
 
-**If an attribute is not optional, it must have a non-nil value when we save changes to the Managed Object Context.** But at other times, Core Data does not care if the attribute is `nil`.
+**If an attribute is not optional, it must have a non-nil value when we save changes to the Managed Object Context.** For other cases though, Core Data does not care if the attribute is `nil`.
 
 Because these properties are not optional, we will need to provide values for them at object creation time.
-
-But we will do that later on!
 
 # Transformable Attributes
 
 Notice that the values for the `loanee` and `itemImage` attributes are both of the `Transformable` type.
 
-Core Data is only capable of storing certain data types. However, neither of the respective data types for those two attributes — `Loanee` and `UIImage` — can be used by Core Data directly. Declaring them as `Transformable` lets Core Data convert their objects into a type it can store, and then convert it back in to the original types when loading from the filesystem.
+Core Data is only capable of storing certain data types. However, neither `Loanee` or `UIImage` can be used by Core Data directly. Declaring them as `Transformable` lets Core Data _convert the objects into a type it can store, and then convert it back in to the original types when loading from the filesystem._
 
 Transformable attributes require an `NSValueTransformer` subclass to handle conversions.
 
@@ -103,7 +100,7 @@ But because `Loanee` does not conform to `NSCoding`, we must modify it to confor
 
 > [action]
 >
-> Update the `Loanee.swift` class to match the following:
+> Update the `Loanee.swift` class to conform to the `NSCoding` protocol:
 >
 ```swift
 import UIKit
