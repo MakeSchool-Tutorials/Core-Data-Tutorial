@@ -28,7 +28,7 @@ func fetchPersistedData(completion: @escaping (FetchItemsResult) -> Void) {
 }
 ```
 
-Notice that gives us an error for using an undeclared type **FetchItemsResult**. This will populate an array with the fetch results, or throw an error on failure.
+Notice that gives us an error for using an undeclared type **FetchItemsResult**. This type will populate an array with the fetch results, or throw an error on failure.
 
 > [action]
 >
@@ -46,13 +46,13 @@ enum FetchItemsResult {
 Now that we’ve created our mechanism for fetching persisted data, we need to focus on the following:
 
 - Calling the `fetch` function at the appropriates point in the lifecycle of the app’s relevant UI presentation objects.
-- Update the Collection View’s data source so that it contains all of the latest changes made to the data store.
+- Updating the Collection View’s data source so that it contains all of the latest changes made to the data store.
 
-To achieve this, we will create and call a method in our `ViewController` class that fetches the latest persisted data and updates the Collection View’s data source.
+To achieve this, we'll create and call a method in the `ViewController` class that fetches the latest persisted data and updates the Collection View’s data source.
 
 > [action]
 >
-> In the `/controllers/ViewController.swift` class implementation, add this `updateDataSource` function:
+> In the `/controllers/ViewController.swift` class implementation, add an `updateDataSource` function:
 >
 ```swift
 // populate an array with fetched results on success, or to delete all items from that array on failure
@@ -99,7 +99,7 @@ Build and run the project, and validate that items saved are persisted even afte
 >
 > Run the Loaner app, add 2 items into the app, and then use the Fast App Switcher to eject it from memory. Reopen the app and make sure the items persisted.
 
-Try saving items in the app even after the app is ejected from memory!
+Your items should now be saved even if the app is taken out of memory!
 
 # Now Commit
 
