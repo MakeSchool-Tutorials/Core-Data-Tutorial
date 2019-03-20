@@ -3,9 +3,19 @@ title: "Building the Core Data Stack"
 slug: building-the-coredata-stack
 ---
 
+1. ~~Build out the Core Data Model~~
+1. ~~Create the Managed Object~~
+1. **Build the Core Data Stack**
+    1. **Create an ItemStore class**
+    1. **Implement the `NSPersistentContainer`**
+    1. **Instantiate the ItemStore object**
+1. Implement Saving Data
+1. Implement Fetching Data
+1. Implement Deleting Data
+
 The Core Data stack consists of multiple objects that interface with our entities to save and load instances to a persistent store. The stack also includes the model file that describes our entities.
 
-# Creating the Store Class
+# Creating the ItemStore Class
 
 In keeping with best practices regarding MVC and the principle of Separation of Concerns, we want to **implement Core Data components independently from Controller and View classes.**
 
@@ -56,7 +66,7 @@ let persistentContainer: NSPersistentContainer = {
 }()
 ```
 
-# Instantiating A Store Object
+# Instantiating An ItemStore Object
 
 We want to ensure that the Core Data is available from the moment our app launches, and that there are not multiple versions of the `NSPersistentContainer`, the Managed Object Context, etc.
 

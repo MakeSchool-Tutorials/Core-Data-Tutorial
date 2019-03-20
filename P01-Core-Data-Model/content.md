@@ -3,6 +3,16 @@ title: "Core Data Model"
 slug: core-data-model
 ---
 
+1. **Build out the Core Data Model**
+    1. **Add a Core Data Model file**
+    1. **Create an entity**
+    1. **Add attributes to the entity**
+1. Create the Managed Object
+1. Build the Core Data Stack
+1. Implement Saving Data
+1. Implement Fetching Data
+1. Implement Deleting Data
+
 Much of Core Data’s functionality depends on the schema we use to describe the application’s entities, properties, and the relationships between them.
 
 Core Data uses a schema called a **managed object model** — an instance of `NSManagedObjectModel`.

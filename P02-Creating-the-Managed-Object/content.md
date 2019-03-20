@@ -3,6 +3,18 @@ title: "Creating the Managed Object"
 slug: creating-the-managed-object
 ---
 
+1. ~~Build out the Core Data Model~~
+1. **Create the Managed Object**
+    1. **Copy `Item.swift` for later use**
+    1. **Auto-generate Core Data subclass and extension files**
+    1. **Update the `NSManagedObject` file to include functionality from `Item.swift`**
+    1. **Update the properties extension**
+    1. **Fix build errors we introduced**
+1. Build the Core Data Stack
+1. Implement Saving Data
+1. Implement Fetching Data
+1. Implement Deleting Data
+
 We just created our `Item` entity, but we really want to create a custom Managed Object subclass to represent it instead. Changing it to this subclass will allow us to use it with Core Data.
 
 First back up the `Item.swift` file by saving a copy of it to Desktop or some other safe place — we will need revisit it shortly, but we need to delete the file in its current location so that we can do the subclass creation without conflict in Xcode.

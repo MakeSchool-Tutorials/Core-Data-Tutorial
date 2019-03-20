@@ -3,6 +3,16 @@ title: "Saving Data"
 slug: saving-data
 ---
 
+1. ~~Build out the Core Data Model~~
+1. ~~Create the Managed Object~~
+1. ~~Build the Core Data Stack~~
+1. **Implement Saving Data**
+    1. **Implement a `saveContext` method to save the `viewContext` property**
+    1. **Save loaned items in a logical area of the app**
+    1. **Fix that last remaining build error**
+1. Implement Fetching Data
+1. Implement Deleting Data
+
 Most interactions with Core Data will occur through an instance of `NSManagedObjectContext`: the portal through which our app will create new entities, save changes, and fetch from the store.
 
 The persistent container comes with a `NSManagedObjectContext` as one of its built-in properties. This context property provides an environment — a type of temporary “scratchpad” — where Core Data objects can be created and managed entirely in memory.

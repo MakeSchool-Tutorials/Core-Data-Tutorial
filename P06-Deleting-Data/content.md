@@ -3,6 +3,14 @@ title: "Deleting Data"
 slug: deleting-data
 ---
 
+1. ~~Build out the Core Data Model~~
+1. ~~Create the Managed Object~~
+1. ~~Build the Core Data Stack~~
+1. ~~Implement Saving Data~~
+1. ~~Implement Fetching Data~~
+1. **Implement Deleting Data**
+    1. **Delete items from both the context and data source**
+
 We've nailed saving our items, but what if we want to delete an item? Or mark it as returned?
 
 Prior to adding Core Data, when a user deleted an item, the Collection View’s data source was updated accordingly. But now, our current Core Data implementation doesn’t know how to handle items deleted by the user, resulting in items not actually getting deleted, or marked as returned!

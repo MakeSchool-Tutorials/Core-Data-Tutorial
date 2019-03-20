@@ -15,7 +15,14 @@ By the end of this tutorial, students should be able to...
 
 # Technical Planning
 
-???
+In order to integrate Core Data into our loaner app, we'll have to build it out piece by piece:
+
+1. Build out the Core Data Model
+1. Create the Managed Object
+1. Build the Core Data Stack
+1. Implement Saving Data
+1. Implement Fetching Data
+1. Implement Deleting Data
 
 # Using Git/GitHub
 

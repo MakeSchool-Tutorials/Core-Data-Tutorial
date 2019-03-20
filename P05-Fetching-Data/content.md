@@ -3,6 +3,15 @@ title: "Fetching Data"
 slug: fetching-data
 ---
 
+1. ~~Build out the Core Data Model~~
+1. ~~Create the Managed Object~~
+1. ~~Build the Core Data Stack~~
+1. ~~Implement Saving Data~~
+1. **Implement Fetching Data**
+    1. **Create and send a fetch request**
+    1. **Fetch and update the data source**
+1. Implement Deleting Data
+
 Before we can present saved data to the user, the app must retrieve it from Core Data.
 
 Remember that `fetchRequest` function in `Item+CoreDataProperties.swift`? The `viewContext` object has a built-in `fetch` function that accepts an `NSFetchRequest` result object produced by invoking the `Item` class’s auto-generated `fetchRequest` function.
