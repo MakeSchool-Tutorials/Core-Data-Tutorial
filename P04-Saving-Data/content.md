@@ -1,4 +1,7 @@
-# Working With the Context
+---
+title: "Saving Data"
+slug: saving-data
+---
 
 Most interactions with Core Data will occur through an instance of `NSManagedObjectContext`: the portal through which our app will create new entities, save changes, and fetch from the store.
 
@@ -6,20 +9,19 @@ The persistent container comes with a `NSManagedObjectContext` as one of its bui
 
 When asking the context to fetch data, the context will work with its **persistent store coordinator** to bring temporary copies of its object graph and entities into memory.
 
-However, until we tell the context to save any new changes, all persisted data remains the same.
-
-## The viewContext and Concurrency
-Each instance of `NSManagedObjectContext` is associated with a particular concurrency queue, and we must interact with a context on the queue that is associated with it.
-
-The `viewContext` property, which is built-in to the persistent container, is associated with the Main Queue (aka, the UI Queue).
-
-In the event the app needed to save or retrieve data from Core Data on a queue other than the Main Queue, some other context would be required.
-
-For our purposes, using the Main Queue and the viewContext will suffice.
+However, until we tell the context to save any new changes, all persisted data remains the same. So let's work on saving that data.
 
 # Saving Data
 
-To save any changes any changes in memory back to the database on disk, we will need to call the `save` method on the `viewContext` property.
+Each instance of `NSManagedObjectContext` is associated with a particular concurrency queue, and we must interact with a context on the queue that is associated with it.
+
+The `viewContext` property, which is built-in to the persistent container, is associated with the Main Queue (aka, the UI Queue), and is what we'll use for saving data.
+
+> [info]
+>
+> In the event the app needed to save or retrieve data from Core Data on a queue other than the Main Queue, some other context would be required. For our purposes, using the Main Queue and the viewContext will suffice.
+
+To save any changes in memory back to the database on disk, we will need to call the `save` method on the `viewContext` property.
 
 > [action]
 >
@@ -42,20 +44,20 @@ func saveContext() {
 }
 ```
 
-Now, whenever a user creates or deletes an item, **the app will need to save the context, and any changes it happens to contain, to the database on disk.**
+Now, whenever a user creates an item, **the app will need to save the context, and any changes it happens to contain, to the database on disk.**
 
-## Saving Newly Created Items
+# Saving Newly Created Items
 
 Due to the architecture and user flow of the Loaner app, one logical point to save the context is when the `ViewController` and its `Collection View` are presented just after creation of a new loaned item.
 
 > [action]
 >
-> To save a newly created item to Core Data, we need to override the `viewWillAppear` function in `/controllers/ViewController.swift` class and invoke the `saveContext` function on the `store` variable:
+> To save a newly created item to Core Data, we need to override the `viewWillAppear` function in the `/controllers/ViewController.swift` class and invoke the `saveContext` function on the `store` variable:
 >
 ```swift
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(true)
-
+>
     // Save the new items in the Managed Object Context
     store.saveContext()
 }
@@ -70,7 +72,7 @@ Now let's fix that last Xcode error we've been holding on to!
 ```swift
 import UIKit
 import CoreData
-
+>
 class ViewController: UIViewController {
 >
 ...
@@ -87,7 +89,7 @@ func createNewItem() -> Item {
 }
 ```
 
-Try building and launching the app. It should behave exactly as it did at the beginning of this tutorial. It still isn't persisting data yet, so let's get that rolling.
+Try building and launching the app. It should behave exactly as it did at the beginning of this tutorial. It still isn't persisting data yet quite yet though, so let's get that rolling.
 
 # Now Commit
 
@@ -95,6 +97,6 @@ Try building and launching the app. It should behave exactly as it did at the be
 >
 ```bash
 $ git add .
-$ git commit -m 'implementing Core Data stack, app builds'
+$ git commit -m 'saving items, app builds'
 $ git push
 ```
