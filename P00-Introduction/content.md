@@ -43,7 +43,6 @@ Doing this will allow you to commit/push/pull the changes you make to your own a
 ```bash
 $ git clone [URL to your starter repo] NAME_OF_LOCAL_REPO
 $ cd NAME_OF_LOCAL_REPO
-$ INSTALL_DEPENDENCIES
 $ git add .
 $ git commit -m 'project init'
 ```
