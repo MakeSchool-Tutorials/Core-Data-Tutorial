@@ -45,11 +45,15 @@ $ git clone [URL to your starter repo] NAME_OF_LOCAL_REPO
 $ cd NAME_OF_LOCAL_REPO
 $ git add .
 $ git commit -m 'project init'
+$ git push origin master
 ```
 
->[action]
-> Push it!
+<!-- -->
+
+> [info]
 >
+> If you run in to a git error about setting up a remote origin, follow the steps below:
+> 
 ```bash
 $ git remote add origin FORKED-GITHUB-REPO-URL
 $ git push origin master -u
