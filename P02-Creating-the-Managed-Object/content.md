@@ -3,18 +3,20 @@ title: "Creating the Managed Object"
 slug: creating-the-managed-object
 ---
 
-For this step, first back up the `item.swift` file by saving a copy of to Desktop or some other safe place — we will need to copy some of the code from it into the `NSManagedObject` subclass after we create it! We delete this so that we can do the next operations without conflict in Xcode.
+We just created our `Item` entity, but we really want to create a custom Managed Object subclass to represent it instead. Changing it to this subclass will allow us to use it with Core Data.
+
+First back up the `Item.swift` file by saving a copy of it to Desktop or some other safe place — we will need revisit it shortly, but we need to delete the file in its current location so that we can do the subclass creation without conflict in Xcode.
 
 > [action]
 >
-> Back up the `Item.swift`:
+> Back up the `Item.swift` file:
 >
 ```bash
 $ cd MOB_2.1_Tutorial_Starter_App/loaner/model/
 $ cp Item.swift ~/Desktop/Item.swift
 ```
 >
-> Then, delete the `Item.swift` file from the project. Make sure to select "Move to Trash"
+> Then, delete the `Item.swift` file from the project. Make sure to select **"Move to Trash"**
 
 # Auto-Generating the Managed Object
 
@@ -22,29 +24,30 @@ We are going to let Core Data auto-generate the Managed Object subclass:
 
 > [action]
 >
-> Select the `LoanedItems.xcdatamodeld` file and click on the `Item` entity. Open the Data Model Inspector, and under `Class --> Codegen`, change the  dropdown option to `Manual/None`
+> Select the `LoanedItems.xcdatamodeld` file and click on the `Item` entity. Open the Data Model Inspector, and under `Class --> Codegen`, change the  dropdown option to `Manual/None`:
 >
 > ![manual-none](assets/manual-none.png)
 
-Next we'll need to do a series of steps to create some Core Data files:
+Next we'll need to do a series of steps to create the Core Data files:
 
 > [action]
 >
 > 1. From `Editor`,  select the `Create NSManagedObject Subclass` option
 > 1. When prompted, ensure the `LoanedItems` Data Model presented has a **checkmark** in the `Select` column, and hit the `Next` button
 > 1. On the next screen, ensure the `Item` under `Entity` has a checkmark, and hit `Next`
-> 1. Choose the `model` folder to place the files, and then press the `Create` button to finish the creation process. By the end this should look like the following:
+> 1. Place the files at the top level, and then press the `Create` button to finish the creation process. Now move them to the `model/` group:
 >
 > ![managed_object](assets/managed_object.png)
 
 This will result in Xcode creating the following 2 Core Data specific files:
 
-- **`Item+CoreDataClass.swift`** — The Xcode-generated subclass of `NSManagedObject`.
-- **`Item+CoreDataProperties.swift`** — A Swift extension of the `NSManagedObject` subclass above that contains all of its attributes and provides an entity-specific class method for creating a fetch request.
+- **`Item+CoreDataClass.swift`**: The Xcode-generated subclass of `NSManagedObject`.
+- **`Item+CoreDataProperties.swift`**: A Swift extension of `Item+CoreDataClass` that contains all of its attributes and provides an entity-specific class method for creating a fetch request.
 
 
-**IMPORTANT DEBUG NOTE**
-If you ever experience Xcode not being able to find `Item`, or if you need to change the model file, delete both files above, restart Xcode, and repeat the steps to generate the `NSManagedObject`
+## IMPORTANT DEBUG NOTE
+
+If you ever experience Xcode not being able to find `Item`, or if you need to change the model file, delete both of the above files, restart Xcode, and repeat the steps to generate the `NSManagedObject`
 
 > [info]
 >
@@ -66,7 +69,7 @@ Let's review what we need to grab from here:
 
 > [action]
 >
-> Copy the `assignLoanee` function from `Item.swift` into `/model/Item+CoreDataClass.swift`, as well as the following imports:
+> Copy the `assignLoanee` function from `Item.swift` into `/model/Item+CoreDataClass.swift`, but remove `mutating`. We'll also need to copy the following imports:
 >
 ```Swift
 import Foundation
@@ -75,7 +78,7 @@ import CoreData
 >
 @objc(Item)
 public class Item: NSManagedObject {
-    mutating func assignLoanee(name: String?, phoneNumber: String?) {
+    func assignLoanee(name: String?, phoneNumber: String?) {
 >        
         //validate contact has at least one number
         guard let contactNumber = phoneNumber else {
@@ -97,7 +100,7 @@ public class Item: NSManagedObject {
 }
 ```
 
-Because of the changes we’ve made, the loanee variable in the `assignLoanee` function can no longer be `nil`, so we will have to initialize it with default values like so:
+Because of the changes we’ve made, the loanee variable in the `assignLoanee` function can no longer be `nil`, so we will have to initialize it with default values:
 
 > [action]
 >
@@ -111,7 +114,7 @@ Because of the changes we’ve made, the loanee variable in the `assignLoanee` f
 
 When `Item` objects are added to the underlying database, they are sent the `awakeFromInsert` message.
 
-Thus, we will need to implement the `awakeFromInsert` function in our `Item` class, which will give initial values to key properties:
+Thus, we will need to override the `awakeFromInsert` function in our `Item` class to give initial values to key properties:
 
 > [action]
 >
@@ -129,7 +132,7 @@ override public func awakeFromInsert() {
 }
 ```
 
-The `/model/Item+CoreDataClass.swift` file should now look like the following:
+The entire `/model/Item+CoreDataClass.swift` file should now look like the following:
 
 ```swift
 import Foundation
@@ -178,18 +181,29 @@ public class Item: NSManagedObject {
 > Make the following changes to the `/model/Item+CoreDataProperties.swift` file:
 >
 > - Change all properties to non-optionals by removing their question marks (“?”)
+>
+```Swift
+@NSManaged public var itemImage: NSObject
+@NSManaged public var itemTitle: String
+@NSManaged public var loanee: NSObject
+@NSManaged public var notes: String
+```
 > - Change the `Loanee` property’s type from `NSObject` to `Loanee`:
 >
 ```swift
 @NSManaged public var loanee: Loanee
 ```
-> - Change the `itemImage` property from `NSObject` to `UIImage`, and import UIKit.UIImage to satisfy the compiler:
+> - Change the `itemImage` property from `NSObject` to `UIImage`, and import `UIKit.UIImage` to satisfy the compiler:
 >
 ```swift
+import UIKit.UIImage
+>
+...
+>
 @NSManaged public var itemImage: UIImage
 ```
 
-The `/model/Item+CoreDataProperties.swift` extension file should now consist of the following code:
+The `/model/Item+CoreDataProperties.swift` extension file should now look like the following:
 
 ```swift
 import Foundation
@@ -219,7 +233,7 @@ In the `/model/Item+CoreDataProperties.swift` extension file, the `Loanee` prope
 
 `“Property cannot be declared public because its type uses an internal type.”`
 
-To rectify this, we need to declare the **access type** of the `Loanee` class and its externally used functions as `public` to match the `access type` of this property’s declaration in the extension.
+To fix this, we need to declare the **access type** of the `Loanee` class and its externally used functions as `public` to match the `access type` of this property’s declaration in the extension.
 
 > [action]
 >
@@ -246,9 +260,11 @@ Recall that after auto-generating the Managed Object files, we removed the "?" f
 >
 > Why did we change these to Swift non-optionals? Think about this before looking at the solution below
 
+<!-- -->
+
 > [solution]
 >
-> First, since we set default values for the Managed Object’s properties in the `/model/Item+CoreDataProperties.swift` extension, we know that the database record will not have NULL values when Core Data saves the object.
+> Since we set default values for the Managed Object’s properties in the `/model/Item+CoreDataProperties.swift` extension, we know that the database record will not have NULL values when Core Data saves the object.
 >
 > In addition, because we can count on Core Data’s dynamic runtime to create an instance of the Managed Object when needed, the extra work necessary to handle these as `optionals` is not required.
 
@@ -260,11 +276,11 @@ Because these properties have been changed to Swift non-optionals, we will need 
 
 There should be ~5 errors and 1 warning.
 
-For now, we'll ignore the error in the `createNewItem` function in the `ViewController` class to focus on the other errors related to our changed properties.
+For now, we'll ignore the error in the `createNewItem` function in the `ViewController` class (don't worry, we'll fix it shortly) to focus on the other errors related to our changed properties.
 
 > [action]
 >
-> In `ItemContactInfoViewController.swift`, find the `pressSave` function and fix the errors about “…Optional chaining” by removing the question marks:
+> In `ItemContactInfoViewController.swift`, find the `pressSave` function and fix the errors about `…Optional chaining` by removing the question marks on these lines:
 >
 ```swift
 item.loanee.name = nameFromUserInput
@@ -275,7 +291,7 @@ Next we'll open up `ItemDetailedViewController.swift` and fix the errors in ther
 
 > [action]
 >
-> In `ItemDetailedViewController.swift`, fix the “Initializer for conditional binding must have Optional type, not ‘Loanee’…” error in the `updateUI` function by replacing the optional binding block `(if let loanee...)` with these three lines of code:
+> In `ItemDetailedViewController.swift`, fix the `Initializer for conditional binding must have Optional type, not ‘Loanee’…` error in the `updateUI` function by replacing the optional binding block `(if let loanee...)` with these three lines of code:
 >
 ```swift
 let loanee = item.loanee
@@ -287,7 +303,7 @@ Great, but we have one more error to fix in this file:
 
 > [action]
 >
-> In `ItemDetailedViewController.swift`, fix the “Cannot force unwrap value of non-optional type ‘Loanee’…” error in the `pressMarkAsReturned` function by removing the “!”:
+> In `ItemDetailedViewController.swift`, fix the `Cannot force unwrap value of non-optional type ‘Loanee’…` error in the `pressMarkAsReturned` function by removing the “!”:
 >
 ```swift
 message: "Are you sure you want to mark this item, \(item.itemTitle), as returned from \(item.loanee.name)?",
@@ -295,7 +311,7 @@ message: "Are you sure you want to mark this item, \(item.itemTitle), as returne
 
 The project should now have only 1 warning and the single error in the `createNewItem` function remaining.
 
-We’ll correct that last error soon, but for now, let’s fill out the Core Data Stack by adding other key components to the project. But first...
+We’ll correct that last error soon, but for now, let’s fill out the Core Data Stack by adding other key components to the project!
 
 # Now Commit
 
