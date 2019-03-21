@@ -3,15 +3,21 @@ title: "Introduction"
 slug: introduction
 ---
 
-Let's learn about Core Data!
+Have you ever built or used an app where the data wasn't saved after you swiped it away? Imagine your todo list app on your phone wiped everything away if you ejected the app from memory, or if you had to re-write your grocery list every time you did a fresh start of your app? It would be a pretty painful experience.
 
-# Overview
+We can avoid these situations by utilizing persistent storage in our apps. One way to do this is by using **Core Data**. In this tutorial, we'll be taking an app that tracks items and who they were loaned to, and adding persistent storage to it using Core Data.
 
-???
+> [info]
+>
+> Check out the [Core Data Documentation](https://developer.apple.com/documentation/coredata) to get more information!
 
 # Learning Outcomes
 
 By the end of this tutorial, students should be able to...
+
+1. Implement a Core Data model
+1. Build the various parts that make up the Core Data stack, usage such as entities, the managed object, and the persistent store
+1. Save, fetch, and delete data from persistent storage through Core Data
 
 # Technical Planning
 
@@ -53,7 +59,7 @@ $ git push origin master
 > [info]
 >
 > If you run in to a git error about setting up a remote origin, follow the steps below:
-> 
+>
 ```bash
 $ git remote add origin FORKED-GITHUB-REPO-URL
 $ git push origin master -u

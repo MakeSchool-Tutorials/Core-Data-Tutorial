@@ -99,7 +99,7 @@ func createNewItem() -> Item {
 }
 ```
 
-Try building and launching the app. It should behave exactly as it did at the beginning of this tutorial. Although we're _saving_ the data, we're not _fetching_ it properly, so the saved data won't be displayed. Let's get that rolling in the next chapter.
+Try building and launching the app. It should behave exactly as it did at the beginning of this tutorial. Although we've successfully **implemented saving data,**, we're not _fetching_ it properly, so the saved data won't be displayed. Let's get that rolling in the next chapter.
 
 # Now Commit
 

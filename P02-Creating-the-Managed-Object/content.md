@@ -323,7 +323,7 @@ message: "Are you sure you want to mark this item, \(item.itemTitle), as returne
 
 The project should now have only 1 warning and the single error in the `createNewItem` function remaining.
 
-We’ll correct that last error soon, but for now, let’s fill out the Core Data Stack by adding other key components to the project!
+We’ll correct that last error soon, but for now, we've **implemented our managed object!** Let’s fill out the Core Data Stack by adding other key components to the project!
 
 # Now Commit
 

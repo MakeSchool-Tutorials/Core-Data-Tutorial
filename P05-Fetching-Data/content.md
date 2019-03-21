@@ -108,7 +108,7 @@ Build and run the project, and validate that items saved are persisted even afte
 >
 > Run the Loaner app, add 2 items into the app, and then use the Fast App Switcher to eject it from memory. Reopen the app and make sure the items persisted.
 
-Your items should now be saved even if the app is taken out of memory!
+Now that **fetching data from persistent storage is working,** items should now be saved even if the app is taken out of memory!
 
 # Now Commit
 

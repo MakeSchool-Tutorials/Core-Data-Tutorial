@@ -47,7 +47,7 @@ Because the `markItemAsReturned` function simply calls the `deleteItem` function
 >
 > Rebuild and run the app again and try deleting items or marking them as returned. Make sure they delete, and then eject the app from memory and reopen it to see that they stay deleted.
 
-**Congrats! The loaner app is now fully functional with Core Data!**
+**Now that we can delete items from persistent storage, the loaner app is now fully functional with Core Data! Congrats!**
 
 # Now Commit
 

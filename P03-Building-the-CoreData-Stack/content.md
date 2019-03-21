@@ -100,7 +100,7 @@ class ViewController: UIViewController {
 
 Rebuild the project, and make sure that previous error has been resolved!
 
-With the persistent container set up, _our app will now be able to interact with Core Data!_
+With the persistent container set up, _our app will now be able to interact with Core Data!_ This means we've **built out our Core Data stack!** Now we can work on actually saving, fetching, and deleting the data in persistent storage.
 
 # Now Commit
 
