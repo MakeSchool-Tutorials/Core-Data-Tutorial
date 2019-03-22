@@ -153,7 +153,7 @@ class Loanee: NSObject, NSCoding {
 }
 ```
 
-Congrats on **Implementing a Core Data model!** In the next chapter, we will create a custom Managed Object subclass to represent the `Item` entity!
+Congrats on **Implementing a Core Data model using Xcode's Model editor!** In the next chapter, we will create a custom Managed Object subclass to represent the `Item` entity!
 
 # Now Commit
 

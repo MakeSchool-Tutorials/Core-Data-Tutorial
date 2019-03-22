@@ -30,7 +30,7 @@ Because these objects can be thought of as nodes, and their interrelationships a
 
 By the end of this tutorial, students should be able to...
 
-1. Implement a Core Data model
+1. Implement a Core Data model using Xcode's Model editor
 1. Build the various parts that make up the Core Data stack, usage such as entities, the managed object, and the persistent store
 1. Save, fetch, and delete data from persistent storage through Core Data
 
