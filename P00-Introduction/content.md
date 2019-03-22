@@ -15,11 +15,11 @@ We can avoid these situations by utilizing persistent storage in our apps. One w
 
 Core Data is a framework from Apple that allows you to create and describe your model objects and their relationships to one another.
 
-It is responsible for the lifetimes of these objects, ensuring their relationships are kept consistent and up to date.
+It is responsible for the lifetimes of these objects, ensuring their relationships are kept consistent and up to date. If you want to be able to preserve data in an app beyond the life of a single app session, then you need to implement a type of persistent storage such as Core Data. Imagine if you couldn't save your home address in google maps, or if you had to re-add all of the people you follow on social media every time you opened the app.
 
 Because these objects can be thought of as nodes, and their interrelationships as vertices in a mathematical graph, such a collection of objects is often referred to as an **object graph**, as seen below:
 
-![object-graph-example](assets/object-graph-example.png)
+![object-graph-example](assets/01_what-is-core-data_object-graph.png)
 
 **Core Data is not:**
 
@@ -84,11 +84,11 @@ Build and run the app to confirm that it loads properly. You should see somethin
 
 **Main Screen**
 
-![Loaner_main-scene_b4CD](assets/Loaner_main-scene_b4CD.png)
+![Loaner_main-scene_b4CD](assets/02_set-up-git_main-scene.png)
 
 **Item Details Screen**
 
-![Loaner_item-details-scene_b4CD](assets/Loaner_item-details-scene_b4CD.png)
+![Loaner_item-details-scene_b4CD](assets/03_set-up-git_item-details-scene.png)
 
 # Confirming Starter App State
 We haven’t added any data persistence to the starter app yet, so nothing will be retained once the app is no longer in memory.
@@ -104,7 +104,7 @@ To validate the working state of the starter app, let’s add some user data, th
 > 1. If that doesn't work, use `[Cmd]+[Shift]+H+H`, to reveal all apps in memory
 > 1. When the Loaner app in the Fast App Switcher as seen below, swipe upward to remove it from memory
 
-![fast-app-switcher](assets/Fast-App-Switching.png)
+![fast-app-switcher](assets/04_confirming-starter-app_fast-app-switching.png)
 
 Click on the Loaner app icon to relaunch it. None of the loaned items you previously created should be present.
 

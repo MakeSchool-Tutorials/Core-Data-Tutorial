@@ -54,7 +54,7 @@ It also simplifies the creation and management of the Core Data stack by handlin
 > - An **External Persistent Store** that contains saved records (i.e., a SQLite database)
 >
 > A full diagram of the relationships below:
-> ![components](assets/components.png)
+> ![components](assets/01_implementing-nspersistentcontainer_components.png)
 
 <!-- -->
 

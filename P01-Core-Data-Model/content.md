@@ -27,7 +27,7 @@ To start the Core Data implementation, we will need to add a new Data Model file
 >
 > When prompted to `Save As`, name the new model file `LoanedItems.xcdatamodeld`, and save it under the `model/` group
 >
-> ![LoanedItems](assets/LoanedItems_ModelFile.png)
+> ![LoanedItems](assets/01_adding-the-core_LoanedItems-ModelFile.png)
 
 At runtime, Core Data will use the `LoanedItems.xcdatamodeld` file (which describes the managed objects) to programmatically create an instance of `NSManagedObjectModel`, which is an in-memory representation of the `LoanedItems.xcdatamodeld` file.
 
@@ -55,7 +55,7 @@ Let's create an entity of our own:
 > 1. Click the `Add Entity` button in the lower left corner of the `Model Editor` to create a new entity (or find it in Xcode's Editor dropdown menu). A new entity with the default name `Entity` should appear in the `Entities` list in the `Model Editor`’s navigator pane.
 >1. Change the new entity’s name to `Item`
 
-![renamed_entity](assets/renamed_entity.png)
+![renamed_entity](assets/02_modeling-entities_renamed_entity.png)
 
 # Adding Attributes
 
@@ -65,7 +65,7 @@ Let's create an entity of our own:
 >
 > Add `notes`, `itemImage`, `itemTitle`, and `loanee` attributes to the `Item` entity. Note that attribute order may differ, but the **Type assigned to each Attribute should match the Type shown for each in the list below**:
 >
-> ![attributes](assets/attributes.png)
+> ![attributes](assets/03_adding-attributes_attributes.png)
 
 Double check that the attributes have the correct name and Type!
 
@@ -84,7 +84,7 @@ We don't need this feature, or the complexities it can add, so let’s change al
 
 The end result of this should look like the below image:
 
-![optional_attributes_unchecked](assets/optional_attributes_unchecked.png)
+![optional_attributes_unchecked](assets/04_optional-&-non_unchecked.png)
 
 **If an attribute is not optional, it must have a non-nil value when we save changes to the Managed Object Context.** For other cases though, Core Data does not care if the attribute is `nil`.
 

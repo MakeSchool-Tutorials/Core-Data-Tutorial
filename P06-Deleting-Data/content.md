@@ -59,7 +59,9 @@ $ git commit -m 'Items can be deleted'
 $ git push
 ```
 
-# Feedback and Review
+# Feedback and Review - 2 minutes
+
+**We promise this won't take longer than 2 minutes!**
 
 Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://forms.gle/Y7GDpuyt67T7YvJC7)
 

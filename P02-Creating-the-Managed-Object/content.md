@@ -38,7 +38,7 @@ We are going to let Core Data auto-generate the Managed Object subclass:
 >
 > Select the `LoanedItems.xcdatamodeld` file and click on the `Item` entity. Open the Data Model Inspector, and under `Class --> Codegen`, change the  dropdown option to `Manual/None`:
 >
-> ![manual-none](assets/manual-none.png)
+> ![manual-none](assets/01_auto-generating_manual-none.png)
 
 Next we'll need to do a series of steps to create the Core Data files:
 
@@ -49,7 +49,7 @@ Next we'll need to do a series of steps to create the Core Data files:
 > 1. On the next screen, ensure the `Item` under `Entity` has a checkmark, and hit `Next`
 > 1. Place the files at the top level, and then press the `Create` button to finish the creation process. Now move them to the `model/` group:
 >
-> ![managed_object](assets/managed_object.png)
+> ![managed_object](assets/02_auto-generating_managed-object.png)
 
 This will result in Xcode creating the following 2 Core Data specific files:
 
