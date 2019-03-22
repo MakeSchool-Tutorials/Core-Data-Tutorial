@@ -15,7 +15,7 @@ slug: creating-the-managed-object
 1. Implement Fetching Data
 1. Implement Deleting Data
 
-We just created our `Item` entity, but we really want to create a custom Managed Object subclass to represent it instead. Changing it to this subclass will allow us to use it with Core Data.
+We just created our `Item` entity, but we really want to create a custom Managed Object subclass to represent it instead. A **Managed Object** is used to represent the entities in the application. Changing it to this subclass will allow us to use it with Core Data.
 
 First back up the `Item.swift` file by saving a copy of it to Desktop or some other safe place — we will need revisit it shortly, but we need to delete the file in its current location so that we can do the subclass creation without conflict in Xcode.
 

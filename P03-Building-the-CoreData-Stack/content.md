@@ -36,15 +36,27 @@ _This is the class through which our app will create and manage all Core Data co
 
 # Implementing NSPersistentContainer
 
-The **NSPersistentContainer** object encapsulates the major Core Data Stack components in the application. It consists of a set of objects that facilitate **saving and retrieving data.**
+The **NSPersistentContainer** object encapsulates the majority of Core Data Stack components in the application. It consists of a set of objects that facilitate **saving and retrieving data.**
 
 It also simplifies the creation and management of the Core Data stack by handling the creation of:
 
-- The managed object model: `NSManagedObjectModel`
-- The persistent store coordinator: `NSPersistentStoreCoordinator`
-- The managed object context: `NSManagedObjectContext`
+- The managed object model (`NSManagedObjectModel`) - Describes the entities in the stores
+- The persistent store coordinator (`NSPersistentStoreCoordinator`) - Aggregates all the stores
+- The managed object context (`NSManagedObjectContext`) - The object used to create and fetch managed objects and to manage undo and redo operations
 
 `NSPersistentContainer` includes all objects needed to represent a functioning Core Data stack, including an object to manage the Core Data state as a whole, and an object representing the Data Model.
+
+> [info]
+>
+> Two other parts of the Core Data Stack that the `NSPersistentContainer` does not cover:
+>
+> - **Persistent Object Store (aka, Persistent Store)** — Maps between records in the store and objects in your application
+> - An **External Persistent Store** that contains saved records (i.e., a SQLite database)
+>
+> A full diagram of the relationships below:
+> ![components](assets/components.png)
+
+<!-- -->
 
 > [action]
 >

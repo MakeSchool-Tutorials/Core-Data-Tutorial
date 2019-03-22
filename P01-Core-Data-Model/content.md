@@ -35,7 +35,7 @@ At runtime, Core Data will use the `LoanedItems.xcdatamodeld` file (which descri
 
 The **managed object model** allows Core Data to map from records in a persistent store, to managed objects that we use in our application.
 
-The managed object model is a collection of **entity description objects**, which are instances of `NSEntityDescription`.
+The managed object model is a collection of **entity description objects**, which are instances of `NSEntityDescription`. An **entity** is the mapping between a database table and a Swift type (class).
 
 An entity description describes an entity in terms of:
 
@@ -59,7 +59,7 @@ Let's create an entity of our own:
 
 # Adding Attributes
 
-The attributes we add to an entity are also represented as properties in the `NSManagedObject` subclasses. Let's give our new entity some attributes:
+**Attributes** are the properties of a Swift type. The attributes we add to an entity are also represented as properties in the `NSManagedObject` subclasses. Let's give our new entity some attributes:
 
 > [action]
 >

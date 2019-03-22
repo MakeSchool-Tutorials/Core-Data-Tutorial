@@ -11,6 +11,21 @@ We can avoid these situations by utilizing persistent storage in our apps. One w
 >
 > Check out the [Core Data Documentation](https://developer.apple.com/documentation/coredata) to get more information!
 
+# What is Core Data?
+
+Core Data is a framework from Apple that allows you to create and describe your model objects and their relationships to one another.
+
+It is responsible for the lifetimes of these objects, ensuring their relationships are kept consistent and up to date.
+
+Because these objects can be thought of as nodes, and their interrelationships as vertices in a mathematical graph, such a collection of objects is often referred to as an **object graph**, as seen below:
+
+![object-graph-example](assets/object-graph-example.png)
+
+**Core Data is not:**
+
+- An Object-Relational-Mapping (ORM) system
+- A database
+
 # Learning Outcomes
 
 By the end of this tutorial, students should be able to...
@@ -64,6 +79,16 @@ $ git push origin master
 $ git remote add origin FORKED-GITHUB-REPO-URL
 $ git push origin master -u
 ```
+
+Build and run the app to confirm that it loads properly. You should see something like the following, after you have made some items:
+
+**Main Screen**
+
+![Loaner_main-scene_b4CD](assets/Loaner_main-scene_b4CD.png)
+
+**Item Details Screen**
+
+![Loaner_item-details-scene_b4CD](assets/Loaner_item-details-scene_b4CD.png)
 
 # Confirming Starter App State
 We haven’t added any data persistence to the starter app yet, so nothing will be retained once the app is no longer in memory.
