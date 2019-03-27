@@ -33,7 +33,7 @@ At runtime, Core Data will use the `LoanedItems.xcdatamodeld` file (which descri
 
 # Modeling Entities
 
-The **managed object model** allows Core Data to map from records in a persistent store, to managed objects that we use in our application.
+The **managed object model** allows Core Data to map records in a persistent store into managed objects that we use in our application.
 
 The managed object model is a collection of **entity description objects**, which are instances of `NSEntityDescription`. An **entity** is the mapping between a database table and a Swift type (class).
 
@@ -53,7 +53,7 @@ Let's create an entity of our own:
 >
 > 1. Select the `LoanedItems.xcdatamodeld` file in the `Project Navigator` pane to display Core Data’s `Data Model Editor`.
 > 1. Click the `Add Entity` button in the lower left corner of the `Model Editor` to create a new entity (or find it in Xcode's Editor dropdown menu). A new entity with the default name `Entity` should appear in the `Entities` list in the `Model Editor`’s navigator pane.
->1. Change the new entity’s name to `Item`
+>1. Change the new entity’s name to `Item` by clicking on `Entity` and changing the `Name` field in the `Datal Model Inspector`
 
 ![renamed_entity](assets/02_modeling-entities_renamed_entity.png)
 
@@ -68,6 +68,8 @@ Let's create an entity of our own:
 > ![attributes](assets/03_adding-attributes_attributes.png)
 
 Double check that the attributes have the correct name and Type!
+
+What's it mean to be a `Transformable` type though? We'll cover that shortly, but first we need to talk about optionality.
 
 # Optional & Non-Optional Attributes
 

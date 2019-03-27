@@ -3,9 +3,11 @@ title: "Introduction"
 slug: introduction
 ---
 
-Have you ever built or used an app where the data wasn't saved after you swiped it away? Imagine your todo list app on your phone wiped everything away if you ejected the app from memory, or if you had to re-write your grocery list every time you did a fresh start of your app? It would be a pretty painful experience.
+In this tutorial, you'll be given a loaner app that you will add persistence functionality to. In the app you can add items that you want to loan to people. Each item has a picture and a name, and also allows for the option to add notes. Once you add the item, you can then add the name and phone number of the person you're loaning the item to. From there you can track who you've loaned your items to, and can mark them as returned or delete them as well.
 
-We can avoid these situations by utilizing persistent storage in our apps. One way to do this is by using **Core Data**. In this tutorial, we'll be taking an app that tracks items and who they were loaned to, and adding persistent storage to it using Core Data.
+If you play around with the app though, you may notice a glaring issue. If the app gets removed from memory, all of the data and items stored in the app will disappear! This is a huge flaw in a system that's supposed to always track who has your stuff!
+
+We can avoid these situations by utilizing persistent storage in our apps. One way to do this is by using **Core Data**. In this tutorial, we'll be taking this loaner app and adding persistent storage to it using Core Data.
 
 > [info]
 >

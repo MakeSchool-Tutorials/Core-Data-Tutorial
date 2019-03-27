@@ -124,15 +124,16 @@ Because of the changes we’ve made, the loanee variable in the `assignLoanee` f
 }
 ```
 
-When `Item` objects are added to the underlying database, they are sent the `awakeFromInsert` message.
+When `Item` objects are added to the underlying database, they are sent the [awakeFromInsert](https://developer.apple.com/documentation/coredata/nsmanagedobject/1506548-awakefrominsert) message. `awakeFromInsert` is used to initialized specific default values for attributes, such as the four we created last chapter.
 
-Thus, we will need to override the `awakeFromInsert` function in our `Item` class to give initial values to key properties:
+We will need to override the `awakeFromInsert` function in our `Item` class to give initial values to our `Item` attributes:
 
 > [action]
 >
 > Add the following function to `/model/Item+CoreDataClass.swift`
 >
 ```swift
+// Initialize our item attributes with default values
 override public func awakeFromInsert() {
     super.awakeFromInsert()
 >
@@ -187,6 +188,10 @@ public class Item: NSManagedObject {
 
 
 # Updating the Properties Extension
+
+We're going to do a bit of cleanup on our properties in terms of getting their types all in order.
+
+**important note:** In doing the below changes you'll get some errors. That's ok, as we're going to fix them in the section after this, so just hang tight for now.
 
 > [action]
 >
@@ -303,12 +308,16 @@ Next we'll open up `ItemDetailedViewController.swift` and fix the errors in ther
 
 > [action]
 >
-> In `ItemDetailedViewController.swift`, fix the `Initializer for conditional binding must have Optional type, not ‘Loanee’…` error in the `updateUI` function by replacing the optional binding block `(if let loanee...)` with these three lines of code:
+> In `ItemDetailedViewController.swift`, fix the `Initializer for conditional binding must have Optional type, not ‘Loanee’…` error in the `updateUI` function by replacing the optional binding block `(if let loanee...)` with these three lines of code (keep the comment though for the future feature!):
 >
 ```swift
 let loanee = item.loanee
 labelLoaneeName.text = loanee.name
 loaneePhoneNumLabel.text = loanee.contactNumber
+>
+/** For Future Feature: Ability to access Contacts app
+imageViewLoanee.image = loanee.profileImage
+**/
 ```
 
 Great, but we have one more error to fix in this file:
@@ -327,10 +336,11 @@ We’ll correct that last error soon, but for now, we've **implemented our manag
 
 # Now Commit
 
+Remember we have an error, so let's not push yet, but we can (and should) still commit what we have so far:
+
 >[action]
 >
 ```bash
 $ git add .
 $ git commit -m 'Created the managed object'
-$ git push
 ```

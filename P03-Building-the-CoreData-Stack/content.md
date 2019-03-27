@@ -110,16 +110,17 @@ class ViewController: UIViewController {
 }
 ```
 
-Rebuild the project, and make sure that previous error has been resolved!
+Rebuild the project, and make sure that new error we just created has been resolved!
 
 With the persistent container set up, _our app will now be able to interact with Core Data!_ This means we've **built out our Core Data stack!** Now we can work on actually saving, fetching, and deleting the data in persistent storage.
 
 # Now Commit
+
+We still have that `Incorrect argument label in call` error, so remember not to push! We'll fix that in the next chapter.
 
 >[action]
 >
 ```bash
 $ git add .
 $ git commit -m 'implemented persistent container'
-$ git push
 ```
