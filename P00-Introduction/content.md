@@ -13,6 +13,8 @@ We can avoid these situations by utilizing persistent storage in our apps. One w
 >
 > Check out the [Core Data Documentation](https://developer.apple.com/documentation/coredata) to get more information!
 
+**NOTE:** There's going to be a lot of terminology in this tutorial. There is an appendix at the very end with definitions of terms, so please reference that if you ever need a reminder on terms while going through this tutorial.
+
 # What is Core Data?
 
 Core Data is a framework from Apple that allows you to create and describe your model objects and their relationships to one another.
