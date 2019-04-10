@@ -58,31 +58,25 @@ Much like we've done in earlier tutorials, make sure you're committing your code
 Set up your repo!
 
 > [action]
-> Go to the [starter repo](https://github.com/Make-School-Labs/StarterApp-CoreData-iOS) and fork the repo into your own personal account
+> Go to the [starter repo](https://github.com/Make-School-Labs/StarterApp-CoreData-iOS) and clone the repo locally
+>
+```bash
+$ git clone git@github.com:Make-School-Labs/StarterApp-CoreData-iOS.git
+```
 
-Doing this will allow you to commit/push/pull the changes you make to your own account. **It is very important you do the above step first before doing the below.**
+Now we need to change the remote so that you can commit/push/pull the changes you make to your own repo. **It is very important you do the below steps in order to get everything working properly.**
 
 > [action]
-> Clone the starter project from your fork
+> Go to GitHub and create an _empty_, public repository called REPO-NAME, and now associate it as a remote for your cloned starter code, and then push to it.
 >
 ```bash
-$ git clone [URL to your starter repo] NAME_OF_LOCAL_REPO
-$ cd NAME_OF_LOCAL_REPO
-$ git add .
-$ git commit -m 'project init'
-$ git push origin master
+$ cd StarterApp-CoreData-iOS
+# can grab the url from the "Clone or download" link on your repo page
+$ git remote set-url origin git@github.com:YOUR_USERNAME/REPO-NAME
+$ git push -u origin master
 ```
 
-<!-- -->
-
-> [info]
->
-> If you run in to a git error about setting up a remote origin, follow the steps below:
->
-```bash
-$ git remote add origin FORKED-GITHUB-REPO-URL
-$ git push origin master -u
-```
+Go to your repo on GitHub and make sure your previously empty repo is now full with starter code! Now when you add/commit/push, it'll be to your repo!
 
 Build and run the app to confirm that it loads properly. You should see something like the following, after you have made some items:
 
