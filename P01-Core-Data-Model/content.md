@@ -166,3 +166,10 @@ $ git add .
 $ git commit -m 'Created entity and attributes'
 $ git push
 ```
+
+# Stretch Challenges
+
+> [challenge]
+>
+> 1. For our `Item` entity, what if we want to learn more about that item? Or what if we have multiple of that item? Add `description`, and `quantity` attributes to account for this.
+> 1. Maybe we don't fully trust whoever is loaning our item, and we want to collect `collateral` on it. `collateral` should have the name of the collateral, and an estimated price associated with it. Add a `collateral` attribute, and define the class for it as needed.
