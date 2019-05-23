@@ -171,5 +171,5 @@ $ git push
 
 > [challenge]
 >
-> 1. For our `Item` entity, what if we want to learn more about that item? Or what if we have multiple of that item? Add `description`, and `quantity` attributes to account for this.
+> 1. For our `Item` entity, what if we want to learn more about that item? Or what if we have multiple of that item? What if we also want to keep track of when the item got added to the list of available items? Add `description`, `quantity`, and `createdAt` attributes to account for this.
 > 1. Maybe we don't fully trust whoever is loaning our item, and we want to collect `collateral` on it. `collateral` should have the name of the collateral, and an estimated price associated with it. Add a `collateral` attribute, and define the class for it as needed.
