@@ -186,6 +186,9 @@ public class Item: NSManagedObject {
 }
 ```
 
+> [challenge]
+>
+> If you did the stretch challenges from the previous chapter, make sure to do the appropriate updates here to make sure your additional attributes are also handled appropriately.
 
 # Updating the Properties Extension
 
