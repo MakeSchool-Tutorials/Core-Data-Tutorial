@@ -44,6 +44,8 @@ It also simplifies the creation and management of the Core Data stack by handlin
 - The persistent store coordinator (`NSPersistentStoreCoordinator`) - Aggregates all the stores
 - The managed object context (`NSManagedObjectContext`) - The object used to create and fetch managed objects and to manage undo and redo operations
 
+![corestack](assets/corestack.png)
+
 `NSPersistentContainer` includes all objects needed to represent a functioning Core Data stack, including an object to manage the Core Data state as a whole, and an object representing the Data Model.
 
 > [info]
