@@ -66,3 +66,14 @@ $ git push
 Please take a moment to rate your understanding of learning outcomes from this tutorial, and how we can improve it via our [tutorial feedback form](https://forms.gle/Y7GDpuyt67T7YvJC7)
 
 This allows us to get feedback on how well the students are grasping the learning outcomes, and tells us where we can improve the tutorial experience.
+
+# Stretch Challenge
+
+> [challenge]
+>
+> You've decided that an `Item` is too general, and that you're only going to be loaning out specific items, so you can have more granular descriptions. You decide to loan out only the following:
+>
+> 1. `Jacket`: with attributes `brand` (string), `size` (string), `loanee`, `color` (string), and `defects` (a list of strings)
+> 1. `Comic`: with attributes `title` (string), `issueNumber` (integer), `publisher` (string), and `writer` (it's own class with `name`, `email`, and `age` properties)
+>
+> Build these out through the steps you learned earlier in how to build out the Core Data stack for these new entities. and have them save, fetch, and delete through Core Data
