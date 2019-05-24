@@ -67,13 +67,24 @@ Please take a moment to rate your understanding of learning outcomes from this t
 
 This allows us to get feedback on how well the students are grasping the learning outcomes, and tells us where we can improve the tutorial experience.
 
-# Stretch Challenge
+# Loaning...Pets!
+
+# Stretch Challenges
+
+We've loaned out some inanimate objects, now let's try loaning out our pets! Sometimes you just wanna snuggle with a puppy without the responsibility of owning one, ya know?
 
 > [challenge]
 >
-> You've decided that an `Item` is too general, and that you're only going to be loaning out specific items, so you can have more granular descriptions. You decide to loan out only the following:
+> Build out a `Pet` entity with the following attributes: `name` (string), `id` (integer), `species` (string), `age` (integer), `petImage` (UIImage), and `loanee`
+>
+> Build this out through the steps you learned earlier. Make sure you can save, fetch, and delete through Core Data
+
+You've decided that an `Item` is too general, and that you're only going to be loaning out specific items, so you can have more granular descriptions.
+
+> [challenge]
+> You decide to loan out only the following:
 >
 > 1. `Jacket`: with attributes `brand` (string), `size` (string), `loanee`, `color` (string), and `defects` (a list of strings)
 > 1. `Comic`: with attributes `title` (string), `issueNumber` (integer), `publisher` (string), and `writer` (it's own class with `name`, `email`, and `age` properties)
 >
-> Build these out through the steps you learned earlier in how to build out the Core Data stack for these new entities. and have them save, fetch, and delete through Core Data
+> Build these out through the steps you learned earlier in how to build out the Core Data stack for these new entities. Make sure you can save, fetch, and delete through Core Data
