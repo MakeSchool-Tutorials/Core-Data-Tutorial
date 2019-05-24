@@ -17,6 +17,12 @@ Much of Core Data’s functionality depends on the schema we use to describe the
 
 Core Data uses a schema called a **managed object model** — an instance of `NSManagedObjectModel`.
 
+At a high level, this is what the managed object model hierarchy looks like in relation to what we'll cover in this chapter:
+
+![model_hierarchy](assets/model_hierarchy.png)
+
+We'll go over what each of these mean below.
+
 # Adding the Core Data Model File
 
 To start the Core Data implementation, we will need to add a new Data Model file to our existing model group.
