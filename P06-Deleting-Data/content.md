@@ -75,6 +75,12 @@ We've loaned out some inanimate objects, now let's try loaning out our pets! Som
 
 > [challenge]
 >
+> Right now `loanee` is just a class. Convert `loanee` into an Entity of its own, and then update the relationship between `loanee` and `item` to match this conversion. Note that _one_ `loanee` can have _multiple_ `item`s
+
+What if we want to offer more than just inanimate items? What if we allowed loaning of pets?
+
+> [challenge]
+>
 > Build out a `Pet` entity with the following attributes: `name` (string), `id` (integer), `species` (string), `age` (integer), `petImage` (UIImage), and `loanee`
 >
 > Build this out through the steps you learned earlier. Make sure you can save, fetch, and delete through Core Data
