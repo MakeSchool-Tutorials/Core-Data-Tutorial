@@ -311,16 +311,12 @@ Next we'll open up `ItemDetailedViewController.swift` and fix the errors in ther
 
 > [action]
 >
-> In `ItemDetailedViewController.swift`, fix the `Initializer for conditional binding must have Optional type, not ‘Loanee’…` error in the `updateUI` function by replacing the optional binding block `(if let loanee...)` with these three lines of code (keep the comment though for the future feature!):
+> In `ItemDetailedViewController.swift`, fix the `Initializer for conditional binding must have Optional type, not ‘Loanee’…` error in the `updateUI` function by replacing the optional binding block `(if let loanee...)` with these three lines of code:
 >
 ```swift
 let loanee = item.loanee
 labelLoaneeName.text = loanee.name
 loaneePhoneNumLabel.text = loanee.contactNumber
->
-/** For Future Feature: Ability to access Contacts app
-imageViewLoanee.image = loanee.profileImage
-**/
 ```
 
 Great, but we have one more error to fix in this file:
