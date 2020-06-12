@@ -69,7 +69,7 @@ Let's create an entity of our own:
 
 > [action]
 >
-> Add `notes`, `itemImage`, `itemTitle`, and `loanee` attributes to the `Item` entity. Note that attribute order may differ, but the **Type assigned to each Attribute should match the Type shown for each in the list below**:
+> Add `notes`, `itemImage`, `itemTitle`, and `loanee` attributes to the `Item` entity Using the `+` button locaed in the Attributes section of the `Item` entity. Note that attribute order may differ, but the **Type assigned to each Attribute should match the Type shown for each in the list below**:
 >
 > ![attributes](assets/03_adding-attributes_attributes.png)
 
