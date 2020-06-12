@@ -58,10 +58,10 @@ Much like we've done in earlier tutorials, make sure you're committing your code
 Set up your repo!
 
 > [action]
-> Go to the [starter repo](https://github.com/Make-School-Labs/StarterApp-CoreData-iOS) and clone the repo locally
+> Go to the [starter repo](https://github.com/Make-School-Labs/loanerAppCD-starter) and clone the repo locally
 >
 ```bash
-$ git clone git@github.com:Make-School-Labs/StarterApp-CoreData-iOS.git
+$ git clone git@github.com:Make-School-Labs/loanerAppCD-starter.git
 ```
 
 Now we need to change the remote so that you can commit/push/pull the changes you make to your own repo. **It is very important you do the below steps in order to get everything working properly.**
@@ -70,7 +70,7 @@ Now we need to change the remote so that you can commit/push/pull the changes yo
 > Go to GitHub and create an _empty_, public repository called REPO-NAME, and now associate it as a remote for your cloned starter code, and then push to it.
 >
 ```bash
-$ cd StarterApp-CoreData-iOS
+$ cd loanerAppCD-starter
 # can grab the url from the "Clone or download" link on your repo page
 $ git remote set-url origin git@github.com:YOUR_USERNAME/REPO-NAME
 $ git push -u origin master
