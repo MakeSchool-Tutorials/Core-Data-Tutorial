@@ -98,7 +98,7 @@ To validate the working state of the starter app, let’s add some user data, th
 >
 > 1. From Xcode, launch the starter app in the Simulator
 > 1. Create 2 or 3 loaned items
-> 1. Completely remove the app from memory by double tapping the Home button or slowly drag upward from the bottom of the screen
+> 1. Completely remove the app from memory by slowly drag upward from the bottom of the screen
 > 1. If that doesn't work, use `[Cmd]+[Shift]+H+H`, to reveal all apps in memory
 > 1. When the Loaner app in the Fast App Switcher as seen below, swipe upward to remove it from memory
 
