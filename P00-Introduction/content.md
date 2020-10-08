@@ -73,7 +73,7 @@ Now we need to change the remote so that you can commit/push/pull the changes yo
 $ cd loanerAppCD-starter
 # can grab the url from the "Clone or download" link on your repo page
 $ git remote set-url origin git@github.com:YOUR_USERNAME/REPO-NAME
-$ git push -u origin master
+$ git push -u origin main
 ```
 
 Go to your repo on GitHub and make sure your previously empty repo is now full with starter code! Now when you add/commit/push, it'll be to your repo!
